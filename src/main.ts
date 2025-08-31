@@ -3,7 +3,7 @@ import { INestApplication } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 
 import { MyConfiguration } from "./configuration";
-import { AppModule } from './controller/release/releaseModule';
+import { mainModule } from "./mainModule";
 
 
 export class MyBackend {
@@ -14,7 +14,7 @@ export class MyBackend {
     // OPEN THE BACKEND SERVER
     //----
     // MOUNT CONTROLLERS
-    this.application_ = await NestFactory.create(AppModule, { logger: false });
+    this.application_ = await NestFactory.create(mainModule, { logger: false });
     await WebSocketAdaptor.upgrade(this.application_);
 
     // DO OPEN
